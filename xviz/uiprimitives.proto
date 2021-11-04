@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package xviz;
+
+import "options.proto";
+
+message TreeTable {
+  option (xviz_json_schema) = "ui-primitives/treetable";
+  repeated TreeTableColumn columns = 1;
+  repeated TreeTableNode nodes = 2;
+}
+
+message TreeTableColumn {
+  enum ColumnType {
+    TREE_TABLE_COLUMN_COLUMN_TYPE_INVALID = 0;
+    INT32 = 1;
+    DOUBLE = 2;
+    STRING = 3;
+    BOOLEAN = 4;
+  }
+  string display_text = 1;
+  ColumnType type = 2;
+  string unit = 3;
+}
+
+message TreeTableNode {
+  int32 id = 1;
+  int32 parent = 2;
+  repeated string column_values = 3;
+}

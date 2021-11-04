@@ -1,0 +1,17 @@
+// --------------------------------------------------------
+// WARNING: XVIZ Protobuf files are unstable, do not use
+// --------------------------------------------------------
+
+syntax = "proto3";
+
+package xviz;
+
+import "google/protobuf/any.proto";
+
+message Envelope {
+  // Categorize the message, recommend pattern: "namespace/type"
+  // This allows for two levels of routing and filtering in an
+  // application.  And for subscription to just some messages.
+  string type = 1;
+  google.protobuf.Any data = 2;
+}
